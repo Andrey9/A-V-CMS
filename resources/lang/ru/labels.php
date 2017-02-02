@@ -91,6 +91,7 @@ return array (
   'email' => 'E-mail',
   'enter_your_email' => 'Введите Ваш email',
   'enter_your_query' => 'Введите Ваш запрос',
+  'error' => 'Ошибка',
   'exit_from_profile' => 'Вийти из профиля',
   'faq' => 'FAQ',
   'female' => 'Женщина',

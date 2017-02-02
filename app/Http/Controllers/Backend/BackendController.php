@@ -63,7 +63,7 @@ class BackendController extends BaseController
     {
         parent::__construct();
 
-        App::setLocale('ru');
+        App::setLocale('ua');
 
         $this->response = $response;
 

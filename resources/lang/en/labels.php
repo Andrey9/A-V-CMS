@@ -92,6 +92,7 @@ return array (
   'email' => 'E-mail',
   'enter_your_email' => 'Enter your email',
   'enter_your_query' => 'Enter your query',
+  'error' => 'Error',
   'exit_from_profile' => 'Exit from profile',
   'faq' => 'FAQ',
   'female' => 'Female',

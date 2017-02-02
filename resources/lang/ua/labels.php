@@ -92,6 +92,7 @@ return array (
   'email' => 'E-mail',
   'enter_your_email' => 'Введіть Ваш email',
   'enter_your_query' => 'введіть Ваш запит',
+  'error' => 'Помилка',
   'exit_from_profile' => 'Вийти з профілю',
   'faq' => 'FAQ',
   'female' => 'Жінка',

@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="tab-pane" id="tags">
-                    @include('article.tabs.tags')
+                    @include('news.tabs.tags')
                 </div>
             </div>
         </div>
