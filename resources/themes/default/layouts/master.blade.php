@@ -1,12 +1,17 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>{!! config('app.name') !!}</title>
+
+    @include('partials.meta')
+
+    @include('partials.styles')
+
 </head>
 <body>
 
-    @yield('content')
+    @yield('container')
+
+    @include('partials.scripts')
 
 </body>
 </html>

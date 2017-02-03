@@ -56,7 +56,7 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
-    <body class="skin-blue {!! !empty($body_css_class) ? $body_css_class : 'sidebar-mini' !!}">
+    <body class="skin-blue-light {!! !empty($body_css_class) ? $body_css_class : 'sidebar-mini' !!}">
 
         <div class="wrapper">
             @yield('main')

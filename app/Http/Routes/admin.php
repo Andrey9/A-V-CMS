@@ -40,7 +40,16 @@ $router->group(
                     ]
                 );
                 $router->resource('page', 'Backend\PageController');
-
+                //photoalbums
+                $router->post(
+                    'photoalbum/{id}/ajax_field',
+                    [
+                        'middleware' => ['ajax'],
+                        'as'         => 'admin.photoalbum.ajax_field',
+                        'uses'       => 'Backend\PhotoalbumController@ajaxFieldChange',
+                    ]
+                );
+                $router->resource('photoalbum', 'Backend\PhotoalbumController');
                 // tag
                 $router->post(
                     'tag/{id}/ajax_field',

@@ -18,7 +18,7 @@
                 </li>
             @endif
 
-            @if ($user->hasAccess('tag.read'))
+            {{--@if ($user->hasAccess('tag.read'))
                 <li class="{!! active_class('admin.tag*') !!}">
                     <a href="{!! route('admin.tag.index') !!}">
                         <i class="fa fa-tags"></i>
@@ -32,7 +32,7 @@
                         @endif
                     </a>
                 </li>
-            @endif
+            @endif--}}
 
             @if ($user->hasAccess('news.read'))
                 <li class="{!! active_class('admin.news*') !!}">
@@ -50,7 +50,7 @@
                 </li>
             @endif
 
-            @if ($user->hasAccess('question.read'))
+            {{--@if ($user->hasAccess('question.read'))
                 <li class="{!! active_class('admin.question*') !!}">
                     <a href="{!! route('admin.question.index') !!}">
                         <i class="fa fa-question-circle"></i>
@@ -64,7 +64,7 @@
                         @endif
                     </a>
                 </li>
-            @endif
+            @endif--}}
 
             @if ($user->hasAccess('menu.read'))
                 <li class="{!! active_class('admin.menu*') !!}">
@@ -75,6 +75,22 @@
                         @if ($user->hasAccess('menu.create'))
                             <small class="label create-label pull-right bg-green" title="@lang('labels.add_menu')"
                                    data-href="{!! route('admin.menu.create') !!}">
+                                <i class="fa fa-plus"></i>
+                            </small>
+                        @endif
+                    </a>
+                </li>
+            @endif
+
+            @if ($user->hasAccess('photoalbum.read'))
+                <li class="{!! active_class('admin.photoalbum*') !!}">
+                    <a href="{!! route('admin.photoalbum.index') !!}">
+                        <i class="fa fa-camera"></i>
+                        <span>@lang('labels.photoalbums')</span>
+
+                        @if ($user->hasAccess('photoalbum.create'))
+                            <small class="label create-label pull-right bg-green" title="@lang('labels.add_photoalbum')"
+                                   data-href="{!! route('admin.photoalbum.create') !!}">
                                 <i class="fa fa-plus"></i>
                             </small>
                         @endif
@@ -98,7 +114,7 @@
                 </li>
             @endif
 
-            @if ($user->hasAccess('textwidget.read'))
+            {{--@if ($user->hasAccess('textwidget.read'))
                 <li class="{!! active_class('admin.text_widget*') !!}">
                     <a href="{!! route('admin.text_widget.index') !!}">
                         <i class="fa fa-font"></i>
@@ -122,7 +138,7 @@
                         <span>@lang('labels.variables')</span>
                     </a>
                 </li>
-            @endif
+            @endif--}}
 
             @if ($user->hasAccess('comments.read'))
                 <li class="{!! active_class('admin.comment*') !!}">
