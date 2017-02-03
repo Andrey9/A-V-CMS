@@ -67,9 +67,9 @@ return [
     |
     */
 
-    'locale' => 'ua',
+    'locale' => 'ru',
 
-    'console_locale' => 'ua',
+    'console_locale' => 'ru',
 
     'locales' => ['ru','ua','en'],
 
@@ -84,7 +84,7 @@ return [
     |
     */
 
-    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'uk'),
+    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'ua'),
 
     /*
     |--------------------------------------------------------------------------
