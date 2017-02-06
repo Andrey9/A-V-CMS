@@ -51,15 +51,15 @@ $router->group(
                 );
                 $router->resource('photoalbum', 'Backend\PhotoalbumController');
                 // tag
-                $router->post(
-                    'tag/{id}/ajax_field',
-                    [
-                        'middleware' => ['ajax'],
-                        'as'         => 'admin.tag.ajax_field',
-                        'uses'       => 'Backend\TagController@ajaxFieldChange',
-                    ]
-                );
-                $router->resource('tag', 'Backend\TagController');
+//                $router->post(
+//                    'tag/{id}/ajax_field',
+//                    [
+//                        'middleware' => ['ajax'],
+//                        'as'         => 'admin.tag.ajax_field',
+//                        'uses'       => 'Backend\TagController@ajaxFieldChange',
+//                    ]
+//                );
+//                $router->resource('tag', 'Backend\TagController');
 
                 // news
                 $router->post(
@@ -73,45 +73,45 @@ $router->group(
                 $router->resource('news', 'Backend\NewsController');
 
                 // articles
-                $router->post(
-                    'article/{id}/ajax_field',
-                    [
-                        'middleware' => ['ajax'],
-                        'as'         => 'admin.article.ajax_field',
-                        'uses'       => 'Backend\ArticleController@ajaxFieldChange',
-                    ]
-                );
-                $router->resource(
-                    'article',
-                    'Backend\ArticleController',
-                    ['only' => ['index', 'edit', 'update', 'destroy']]
-                );
+//                $router->post(
+//                    'article/{id}/ajax_field',
+//                    [
+//                        'middleware' => ['ajax'],
+//                        'as'         => 'admin.article.ajax_field',
+//                        'uses'       => 'Backend\ArticleController@ajaxFieldChange',
+//                    ]
+//                );
+//                $router->resource(
+//                    'article',
+//                    'Backend\ArticleController',
+//                    ['only' => ['index', 'edit', 'update', 'destroy']]
+//                );
 
-                // comments
-                $router->post(
-                    'comment/{id}/ajax_field',
-                    array (
-                        'middleware' => ['ajax'],
-                        'as'         => 'admin.comment.ajax_field',
-                        'uses'       => 'Backend\CommentController@ajaxFieldChange',
-                    )
-                );
-                $router->resource(
-                    'comment',
-                    'Backend\CommentController',
-                    ['only' => ['index', 'edit', 'update', 'destroy']]
-                );
+//                // comments
+//                $router->post(
+//                    'comment/{id}/ajax_field',
+//                    array (
+//                        'middleware' => ['ajax'],
+//                        'as'         => 'admin.comment.ajax_field',
+//                        'uses'       => 'Backend\CommentController@ajaxFieldChange',
+//                    )
+//                );
+//                $router->resource(
+//                    'comment',
+//                    'Backend\CommentController',
+//                    ['only' => ['index', 'edit', 'update', 'destroy']]
+//                );
 
                 // questions
-                $router->post(
-                    'question/{id}/ajax_field',
-                    [
-                        'middleware' => ['ajax'],
-                        'as'         => 'admin.question.ajax_field',
-                        'uses'       => 'Backend\QuestionController@ajaxFieldChange',
-                    ]
-                );
-                $router->resource('question', 'Backend\QuestionController');
+//                $router->post(
+//                    'question/{id}/ajax_field',
+//                    [
+//                        'middleware' => ['ajax'],
+//                        'as'         => 'admin.question.ajax_field',
+//                        'uses'       => 'Backend\QuestionController@ajaxFieldChange',
+//                    ]
+//                );
+//                $router->resource('question', 'Backend\QuestionController');
 
                 // menus
                 $router->post(
@@ -136,38 +136,38 @@ $router->group(
                 $router->resource('banner', 'Backend\BannerController');
 
                 // text_widgets
-                $router->post(
-                    'text_widget/{id}/ajax_field',
-                    [
-                        'middleware' => ['ajax'],
-                        'as'         => 'admin.text_widget.ajax_field',
-                        'uses'       => 'Backend\TextWidgetController@ajaxFieldChange',
-                    ]
-                );
-                $router->resource('text_widget', 'Backend\TextWidgetController');
+//                $router->post(
+//                    'text_widget/{id}/ajax_field',
+//                    [
+//                        'middleware' => ['ajax'],
+//                        'as'         => 'admin.text_widget.ajax_field',
+//                        'uses'       => 'Backend\TextWidgetController@ajaxFieldChange',
+//                    ]
+//                );
+//                $router->resource('text_widget', 'Backend\TextWidgetController');
 
                 // variables
-                $router->post(
-                    'variable/{id}/ajax_field',
-                    array (
-                        'middleware' => ['ajax'],
-                        'as'         => 'admin.variable.ajax_field',
-                        'uses'       => 'Backend\VariableController@ajaxFieldChange',
-                    )
-                );
-                $router->get(
-                    'variable/value/index',
-                    ['as' => 'admin.variable.value.index', 'uses' => 'Backend\VariableController@indexValues']
-                );
-                $router->post(
-                    'variable/value/update',
-                    [
-                        'middleware' => ['ajax'],
-                        'as' => 'admin.variable.value.update',
-                        'uses' => 'Backend\VariableController@updateValue'
-                    ]
-                );
-                $router->resource('variable', 'Backend\VariableController');
+//                $router->post(
+//                    'variable/{id}/ajax_field',
+//                    array (
+//                        'middleware' => ['ajax'],
+//                        'as'         => 'admin.variable.ajax_field',
+//                        'uses'       => 'Backend\VariableController@ajaxFieldChange',
+//                    )
+//                );
+//                $router->get(
+//                    'variable/value/index',
+//                    ['as' => 'admin.variable.value.index', 'uses' => 'Backend\VariableController@indexValues']
+//                );
+//                $router->post(
+//                    'variable/value/update',
+//                    [
+//                        'middleware' => ['ajax'],
+//                        'as' => 'admin.variable.value.update',
+//                        'uses' => 'Backend\VariableController@updateValue'
+//                    ]
+//                );
+//                $router->resource('variable', 'Backend\VariableController');
 
                 // translations
                 $router->get(

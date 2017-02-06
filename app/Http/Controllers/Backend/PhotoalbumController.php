@@ -181,7 +181,7 @@ class PhotoalbumController extends BackendController
         try {
             $model = Photoalbum::with('items')->findOrFail($id);
 
-            $this->data('page_title', '"'.$model->name.'"');
+            $this->data('page_title', trans('labels.photoalbum').' "'.$model->name.'"');
 
             $this->breadcrumbs(trans('labels.photoalbum_editing'));
 

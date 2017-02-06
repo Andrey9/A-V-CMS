@@ -140,14 +140,14 @@
                 </li>
             @endif--}}
 
-            @if ($user->hasAccess('comments.read'))
+            {{--@if ($user->hasAccess('comments.read'))
                 <li class="{!! active_class('admin.comment*') !!}">
                     <a href="{!! route('admin.comment.index') !!}">
                         <i class="fa fa-comment"></i>
                         <span>@lang('labels.comments')</span>
                     </a>
                 </li>
-            @endif
+            @endif--}}
 
             @if ($user->hasAccess('group') || $user->hasAccess('user.read'))
                 <li class="header">@lang('labels.users')</li>

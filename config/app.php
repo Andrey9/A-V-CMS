@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -39,9 +39,9 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://localhost:8000'),
 
-    'name' => env('APP_NAME', 'default'),
+    'name' => env('APP_NAME', 'A&V CMS'),
 
     /*
     |--------------------------------------------------------------------------
@@ -67,9 +67,9 @@ return [
     |
     */
 
-    'locale' => 'ru',
+    'locale' => 'ua',
 
-    'console_locale' => 'ru',
+    'console_locale' => 'ua',
 
     'locales' => ['ru','ua','en'],
 
