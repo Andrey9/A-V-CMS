@@ -50,6 +50,11 @@ class Photoalbum extends Eloquent
         return $query->where('status', true);
     }
 
+    public function scopePositionSorted($query, $order = 'ASC')
+    {
+        return $query->orderBy('position', $order);
+    }
+
     public function getUrl()
     {
         $url[] = $this->slug;
@@ -74,5 +79,10 @@ class Photoalbum extends Eloquent
     public function getContent()
     {
         return empty($this->content) ? $this->short_content : $this->content;
+    }
+
+    public function getImage()
+    {
+        return $this->items()->first()->image;
     }
 }
