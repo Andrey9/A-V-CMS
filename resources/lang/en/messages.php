@@ -35,6 +35,7 @@ return array (
   'destroy_ok' => 'Removal was successful',
   'enter your login' => 'Enter your login',
   'enter your password' => 'Enter your password',
+  'enter correct email' => 'Enter correct EMail',
   'error file saving' => 'Error saving file',
   'error form submit' => 'Error while sending the form. Please try later.',
   'error sending mail' => 'Error sending email',

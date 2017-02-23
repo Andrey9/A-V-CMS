@@ -25,6 +25,7 @@ $router->group(
         //photoalbums
 
         $router->get('photoalbums/{slug}', ['as' => 'photoalbums.show', 'uses' => 'Frontend\PhotoalbumController@show']);
+        $router->get('get_first_photos','Frontend\PhotoalbumController@get_first_photos');
 
         // comments
 //        $router->group(

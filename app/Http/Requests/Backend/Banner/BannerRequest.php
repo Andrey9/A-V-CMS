@@ -29,7 +29,7 @@ class BannerRequest extends FormRequest
             'show_title'      => 'required|boolean',
             'position'        => 'required|integer',
             'status'          => 'required|boolean',
-            'template'        => 'required',
+            /*'template'        => 'required',*/
         ];
 
         $languageRules = [

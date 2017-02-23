@@ -29,7 +29,7 @@ class LastNewsWidget extends Widget
      *
      * @return mixed
      */
-    public function index($template = null, $count = 4)
+    public function index($template = null, $count = 5)
     {
         $list = News::withTranslations()->visible()->publishAtSorted()->positionSorted()->take($count)->get();
 
@@ -37,6 +37,6 @@ class LastNewsWidget extends Widget
             $this->view = $template;
         }
 
-        return view('widgets.last_news.templates.'.$this->view.'.index')->with('list', $list)->render();
+        return view('widgets.last_news.index')->with('list', $list)->render();
     }
 }

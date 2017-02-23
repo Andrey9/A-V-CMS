@@ -27,6 +27,8 @@
     "bootstrap-validator": "~0.9",
     "jquery.inputmask": "3.2.5",
     "components-font-awesome": "~4.5.0",
-    "swipebox": "^1.4.4"
+    "superslides": "*",
+    "lightbox2": "*",
+    "css-hamburgers": "0.7.0"
   }
 }

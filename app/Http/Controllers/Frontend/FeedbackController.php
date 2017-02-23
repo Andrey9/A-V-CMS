@@ -24,22 +24,23 @@ class FeedbackController extends FrontendController
     public function store(FeedbackRequest $request)
     {
         try {
-            Mail::queue(
-                'emails.admin.new_feedback',
-                [
-                    'fio'          => $request->get('fio'),
-                    'email'        => $request->get('email'),
-                    'user_message' => $request->get('message'),
-                ],
-                function ($message) {
-                    $message->to(config('app.email'), config('app.name'))->subject(trans('subjects.new_feedback'));
-                }
-            );
+            Mail::send(
+            'emails.admin.new_feedback',
+            [
+                'fio'          => $request->get('fio'),
+                'email'        => $request->get('email'),
+                'user_message' => $request->get('message'),
+            ],
+            function ($message) use ($request) {
+                $message->from($request->get('email'), $request->get('fio'));
+                $message->to(config('app.email'), config('app.name'))->subject(trans('subjects.new_feedback'));
+            }
+        );
 
-            return [
-                'status'  => 'success',
-                'message' => trans('messages.thanks for your feedback'),
-            ];
+        return [
+            'status'  => 'success',
+            'message' => trans('messages.thanks for your feedback'),
+        ];
         } catch (Exception $e) {
             return ['status' => 'error', 'message' => trans('messages.an error has occurred, try_later')];
         }

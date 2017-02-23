@@ -1,15 +1,21 @@
-@extends('layouts.container')
+@extends('layouts.master')
 
 @section('content')
-    <h1>{!! $model->getTitle() !!}</h1>
-
-    @foreach($model->items as $item)
-        <div class="col-md-4">
-            <a href="{!! $item->image !!}" class="swipebox">
-                <img  height="200px" src="{!! $item->image !!}" alt="">
-                <p>{!! $item->name !!}</p>
-            </a>
-
+    <div class="page">
+        <div class="container">
+            <h1>{!! $model->getTitle() !!}</h1>
+            <hr>
+            @foreach($model->items as $item)
+                <div class="photo">
+                    <div class="image-wrap">
+                        <a href="{!! $item->image !!}" data-lightbox="photoalbum1" class="hover-wrap">
+                            <span class="overlay-img"></span>
+                            <span class="overlay-text glyphincon glyphicon-plus"></span>
+                        </a>
+                        <img src="{!! $item->image !!}" alt="{!! $item->name !!}">
+                    </div>
+                </div>
+            @endforeach
         </div>
-    @endforeach
+    </div>
 @stop

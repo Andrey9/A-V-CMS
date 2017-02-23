@@ -47,6 +47,8 @@ class NewsController extends FrontendController
     {
         $this->data('list', $this->newsService->getList());
 
+        $this->data('title', trans('labels.news'));
+
         return $this->render($this->module.'.index');
     }
 

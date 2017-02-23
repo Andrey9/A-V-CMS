@@ -35,7 +35,7 @@ class PhotoalbumController extends BackendController
         'store'           => 'photoalbum.create',
         'show'            => 'photoalbum.read',
         'edit'            => 'photoalbum.read',
-        'update'          => 'photoalbum.write',
+          'update'          => 'photoalbum.write',
         'destroy'         => 'photoalbum.delete',
         'ajaxFieldChange' => 'photoalbum.write',
     ];

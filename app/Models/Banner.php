@@ -40,6 +40,11 @@ class Banner extends Model
         return $this->hasMany(BannerItem::class, 'banner_id')->positionSorted();
     }
 
+    public function visible_items()
+    {
+        return $this->items()->visible();
+    }
+
     /**
      * @param $query
      *

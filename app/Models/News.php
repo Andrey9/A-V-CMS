@@ -59,6 +59,7 @@ class News extends Eloquent implements FrontLink, SearchableContract, MetaGettab
         'publish_at',
     ];
 
+    protected $dates = ['publish_at'];
     /**
      * @var array
      */

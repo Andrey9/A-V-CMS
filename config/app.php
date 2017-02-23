@@ -41,7 +41,7 @@ return [
 
     'url' => env('APP_URL', 'http://localhost:8000'),
 
-    'name' => env('APP_NAME', 'A&V CMS'),
+    'name' => env('APP_NAME', 'A&VCMS'),
 
     /*
     |--------------------------------------------------------------------------

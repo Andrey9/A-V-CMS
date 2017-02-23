@@ -20,7 +20,7 @@ class PhotoalbumRequest extends FormRequest
         ];
 
         $languageRules = [
-            'name' => 'required',
+            'name' => '',
         ];
 
         foreach (config('app.locales') as $locale) {
@@ -39,7 +39,7 @@ class PhotoalbumRequest extends FormRequest
             'items.old.*.position' => 'required|integer',
         ];
 
-        $itemsLanguageRules = [
+        /*$itemsLanguageRules = [
             'name' => 'required',
         ];
 
@@ -48,7 +48,7 @@ class PhotoalbumRequest extends FormRequest
                 $items_rules['items.new.*.'.$locale.'.'.$name] = $rule;
                 $items_rules['items.old.*.'.$locale.'.'.$name] = $rule;
             }
-        }
+        }*/
 
         return array_merge($rules, $items_rules);
     }

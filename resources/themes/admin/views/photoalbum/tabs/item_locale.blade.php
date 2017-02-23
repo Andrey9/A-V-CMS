@@ -1,7 +1,7 @@
 @if (is_array($item))
     <div class="form-group">
-        <div class="form-group required @if ($errors->has('items.'.$key.'.' .$id. '.'. $locale .'.name')) has-error @endif">
-            {!! Form::text('items['.$key.'][' . $id . '][' . $locale. '][name]', $item[$locale]['name'], ['id' => 'items.'.$key.'.' . $id . '.' . $locale. '.name', 'placeholder' => trans('labels.name'), 'class' => 'form-control input-sm', 'required' => 'true']) !!}
+        <div class="form-group">
+            {!! Form::text('items['.$key.'][' . $id . '][' . $locale. '][name]', $item[$locale]['name'], ['id' => 'items.'.$key.'.' . $id . '.' . $locale. '.name', 'placeholder' => trans('labels.name'), 'class' => 'form-control input-sm']) !!}
         </div>
 
         <div class="form-group">

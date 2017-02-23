@@ -35,6 +35,7 @@ return array (
   'destroy_ok' => 'Видалення пройшло успішно',
   'enter your login' => 'Введіть Ваш логін',
   'enter your password' => 'Введіть Ваш пароль',
+  'enter correct email' => 'Введіть правильний EMail',
   'error file saving' => 'Помилка збереження файла',
   'error form submit' => 'Помилка відправки форми. Спробуйте, будь ласка, пізніше.',
   'error sending mail' => 'Помилка відправки email',

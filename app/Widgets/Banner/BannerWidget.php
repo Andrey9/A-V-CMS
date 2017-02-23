@@ -28,16 +28,15 @@ class BannerWidget extends Widget
      *
      * @return $this
      */
-    public function index($position)
+    public function index()
     {
-        $banners = [];
+        /*$banners = [];*/
 
-        $list = Banner::with(['translations', 'items', 'items.translations'])
-            ->whereLayoutPosition($position)
+        $banner = Banner::with(['translations', 'items', 'items.translations'])
             ->visible()
-            ->get();
+            ->first();
 
-        if (count($list)) {
+        /*if (count($list)) {
             foreach ($list as $banner) {
                 if (view()->exists('widgets.banner.templates.'.$banner->template.'.index')) {
                     $this->view = $banner->template;
@@ -46,9 +45,8 @@ class BannerWidget extends Widget
                 $banners[] = view('widgets.banner.templates.'.$this->view.'.index')
                     ->with(['banner' => $banner])
                     ->render();
-            }
+            }*/
 
-            return view('widgets.banner.index')->with('banners', $banners)->render();
-        }
+            return view('widgets.banner.index')->with('banner', $banner)->render();
     }
 }
