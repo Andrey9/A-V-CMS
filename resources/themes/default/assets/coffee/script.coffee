@@ -1,18 +1,20 @@
 ###*
 # Created by andrey on 13.02.17.
 ###
-
+### слайдер ###
 $ ->
   $('#slides').superslides
     inherit_width_from: '.wide-container'
     inherit_height_from: '.wide-container'
   return
+### menu resize ###
 $(document).on 'scroll', ->
   if $(document).scrollTop() > 600
     $('header').addClass 'smaller'
   else
     $('header').removeClass 'smaller'
   return
+### hamburger ###
 $('.hamburger').on 'click', ->
   if $(this).hasClass('is-active')
     $(this).removeClass 'is-active'
@@ -21,6 +23,7 @@ $('.hamburger').on 'click', ->
     $(this).addClass 'is-active'
     $('.main_menu').addClass 'active'
   return
+### ajax request for first 6 photos ###
 get_first_photos = (id) ->
   $.ajax(
     type: 'GET'
@@ -30,7 +33,7 @@ get_first_photos = (id) ->
       overlay_width_calc()
       return
   return
-
+### photo overlay width calculating ###
 overlay_width_calc = ->
   $('.photo').each ->
     width = $(this).find('img').width()
@@ -40,11 +43,11 @@ overlay_width_calc = ->
     hover.width width
     return
   return
-
+### email validation ###
 isEmail = (email) ->
   regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/
   regex.test email
-
+### set full photoalbum link ###
 $(document).ready ->
   overlay_width_calc()
   get_first_photos 0
@@ -54,6 +57,7 @@ $(document).ready ->
 $(window).resize ->
   overlay_width_calc()
   return
+### photoalbum link click ###
 $(document).on 'click', '.get_first_photos', (event) ->
   event.preventDefault()
   _id = $(this).data('id')
@@ -61,6 +65,7 @@ $(document).on 'click', '.get_first_photos', (event) ->
   get_first_photos _id
   $('#show_full_album').attr 'href', _href
   return
+### mail send function ###
 $('.contacts_form').on 'submit', (event) ->
   event.preventDefault()
   if isEmail($(this).find('input[name=email]').val())
@@ -82,7 +87,7 @@ $('.contacts_form').on 'submit', (event) ->
   else
     message.show $('.message-container').data('email-error'), 'error'
   return
-
+### language setter toggler ###
 $('.languageSet .toggler').on 'click', (e) ->
   e.preventDefault()
   langMenu = $('.languageSet')
