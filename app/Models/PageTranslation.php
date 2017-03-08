@@ -27,8 +27,6 @@ class PageTranslation extends Eloquent
      */
     protected $fillable = [
         'name',
-        'short_content',
-        'content',
         'meta_keywords',
         'meta_title',
         'meta_description',

@@ -16,7 +16,7 @@ class Photoalbum extends Eloquent
      * @var array
      */
     public $translatedAttributes = [
-        'name',
+        'title',
         'short_content',
         'content',
         'meta_keywords',
@@ -31,7 +31,7 @@ class Photoalbum extends Eloquent
         'slug',
         'status',
         'position',
-        'name',
+        'title',
         'image',
         'short_content',
         'content',

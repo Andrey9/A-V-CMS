@@ -14,7 +14,6 @@ class PopulatePagesTable extends Migration
     {
         $id = DB::table('pages')->insertGetId(
             [
-                'parent_id'  => null,
                 'slug'       => 'home',
                 'position'   => 0,
                 'status'     => 1,
@@ -24,7 +23,7 @@ class PopulatePagesTable extends Migration
         );
 
         DB::table('page_translations')->insert([['page_id' => $id, 'name' => 'Главная', 'locale' => 'ru']]);
-        DB::table('page_translations')->insert([['page_id' => $id, 'name' => 'Головна', 'locale' => 'uk']]);
+        DB::table('page_translations')->insert([['page_id' => $id, 'name' => 'Головна', 'locale' => 'ua']]);
         DB::table('page_translations')->insert([['page_id' => $id, 'name' => 'Home', 'locale' => 'en']]);
     }
 

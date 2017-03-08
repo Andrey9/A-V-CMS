@@ -32,8 +32,6 @@ class Page extends Eloquent implements FrontLink, SearchableContract, MetaGettab
      */
     public $translatedAttributes = [
         'name',
-        'short_content',
-        'content',
         'meta_keywords',
         'meta_title',
         'meta_description',
@@ -44,13 +42,10 @@ class Page extends Eloquent implements FrontLink, SearchableContract, MetaGettab
      */
     protected $fillable = [
         'slug',
-        'parent_id',
         'status',
         'position',
         'name',
         'image',
-        'short_content',
-        'content',
         'meta_keywords',
         'meta_title',
         'meta_description',
@@ -61,20 +56,8 @@ class Page extends Eloquent implements FrontLink, SearchableContract, MetaGettab
      */
     protected $guarded = [];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function parent()
-    {
-        return $this->belongsTo(Page::class, 'parent_id')->with('parent');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function childs()
-    {
-        return $this->hasMany(Page::class, 'parent_id');
+    public function content(){
+        return $this->hasMany(PageContent::class);
     }
 
     /**
@@ -148,46 +131,6 @@ class Page extends Eloquent implements FrontLink, SearchableContract, MetaGettab
     public function getTitle()
     {
         return $this->name;
-    }
-
-    /**
-     * @return array
-     */
-    public function getParents()
-    {
-        $result = [];
-
-        $obj = $this->parent();
-
-        while ($obj->count()) {
-            $result[] = $obj->first();
-
-            $obj = $obj->first()->parent();
-        }
-
-        return array_reverse($result);
-    }
-
-    /**
-     * @param int|bool $limit
-     *
-     * @return string
-     */
-    public function getShortContent($limit = false)
-    {
-        $limit = $limit === true ? config('page.default_short_content_length') : $limit;
-
-        $content = empty($this->short_content) ? $this->content : $this->short_content;
-
-        return $limit ? str_limit(strip_tags($content), $limit) : $content;
-    }
-
-    /**
-     * @return string
-     */
-    public function getContent()
-    {
-        return empty($this->content) ? $this->short_content : $this->content;
     }
 
     /**
@@ -272,7 +215,7 @@ class Page extends Eloquent implements FrontLink, SearchableContract, MetaGettab
     public function getMetaDescription()
     {
         return str_limit(
-            empty($this->meta_description) ? strip_tags($this->getContent()) : $this->meta_description,
+            $this->meta_description,
             config('seo.share.meta_description_length')
         );
     }

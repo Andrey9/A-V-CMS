@@ -11,7 +11,11 @@ namespace App\Http\Controllers\Backend;
 use App\Events\Backend\PageDelete;
 use App\Http\Requests\Backend\Page\PageCreateRequest;
 use App\Http\Requests\Backend\Page\PageUpdateRequest;
+use App\Models\Banner;
 use App\Models\Page;
+use App\Models\PageContent;
+use App\Models\Photoalbum;
+use App\Models\TextWidget;
 use App\Models\User;
 use App\Services\PageService;
 use App\Traits\Controllers\AjaxFieldsChangerTrait;
@@ -88,12 +92,11 @@ class PageController extends BackendController
     public function index(Request $request)
     {
         if ($request->get('draw')) {
-            $list = Page::with(['parent'])->withTranslations()->joinTranslations('pages', 'page_translations')->select(
+            $list = Page::withTranslations()->joinTranslations('pages', 'page_translations')->select(
                 'pages.id',
                 'page_translations.name',
                 'status',
                 'position',
-                'parent_id',
                 'slug'
             );
 
@@ -128,19 +131,13 @@ class PageController extends BackendController
                     }
                 )
                 ->setIndexColumn('id')
-                ->removeColumn('short_content')
-                ->removeColumn('content')
                 ->removeColumn('meta_keywords')
                 ->removeColumn('meta_title')
                 ->removeColumn('meta_description')
-                ->removeColumn('parent')
                 ->removeColumn('translations')
-                ->removeColumn('parent_id')
                 ->removeColumn('slug')
                 ->make();
         }
-
-        $this->_fillAdditionTemplateData();
 
         $this->data('page_title', trans('labels.pages'));
         $this->breadcrumbs(trans('labels.pages_list'));
@@ -156,15 +153,9 @@ class PageController extends BackendController
      */
     public function create()
     {
-        $this->_fillAdditionTemplateData();
+        $id = $this->createNewPage();
 
-        $this->data('model', new Page);
-
-        $this->data('page_title', trans('labels.page_create'));
-
-        $this->breadcrumbs(trans('labels.page_create'));
-
-        return $this->render('views.page.create');
+        return $this->show($id);
     }
 
     /**
@@ -177,31 +168,10 @@ class PageController extends BackendController
      */
     public function store(PageCreateRequest $request)
     {
-        $input = $request->all();
-        $input['parent_id'] = isset($input['parent_id']) ? $input['parent_id'] : null;
-
-        DB::beginTransaction();
-
-        try {
-            $model = new Page($input);
-
-            $model->save();
-
-            $this->pageService->setExternalUrl($model);
-
-            DB::commit();
-
-            FlashMessages::add('success', trans('messages.save_ok'));
-
-            return Redirect::route('admin.page.index');
-        } catch (Exception $e) {
-            DB::rollBack();
-
-            FlashMessages::add('error', trans('messages.save_failed'));
-
-            return Redirect::back()->withInput();
-        }
+        return $this->createNewPage();
     }
+
+
 
     /**
      * Display the specified resource.
@@ -238,8 +208,6 @@ class PageController extends BackendController
 
         $this->breadcrumbs(trans('labels.page_editing'));
 
-        $this->_fillAdditionTemplateData($model);
-
         return $this->render('views.page.edit', compact('model'));
     }
 
@@ -271,6 +239,7 @@ class PageController extends BackendController
             $model->fill($input);
 
             $model->update();
+
 
             DB::commit();
 
@@ -313,28 +282,78 @@ class PageController extends BackendController
         return Redirect::route('admin.page.index');
     }
 
-    /**
-     * set to template addition variables for add\update page
-     *
-     * @param \App\Models\Page|null $model
-     */
-    private function _fillAdditionTemplateData($model = null)
-    {
-        if ($model) {
-            $list = Page::with('translations')->where('id', '<>', $model->id)
-                ->where(
-                    function ($query) use ($model) {
-                        $query->orWhere('parent_id', '<>', $model->id)
-                            ->orWhere('parent_id', '=', null);
-                    }
-                )->get();
-        } else {
-            $list = Page::with('translations')->get();
+
+
+    private function createNewPage(){
+        $input = array(
+            '_token' => csrf_token(),
+            'slug' => 'New',
+            'position' => '0',
+            'ru' => array(
+                'name' => ''
+            ),
+            'ua' => array(
+                'name' => ''
+            ),
+            'en' => array(
+                'name' => ''
+            )
+        );
+
+        DB::beginTransaction();
+
+        $model = new Page($input);
+
+        $model->save();
+
+        DB::commit();
+
+        return $model->id;
+    }
+
+    public function elementTypeSelect(Request $request){
+        $type = $request->get('type');
+        switch ($type){
+            case 'banner':
+                $list = Banner::joinTranslations('banners')
+                    ->select('banners.id', 'banner_translations.title')
+                    ->get();
+                break;
+            case 'text_widget':
+                $list = TextWidget::joinTranslations('text_widgets', 'text_widget_translations', 'id', 'text_widget_id')
+                    ->select('text_widgets.id', "text_widget_translations.title")
+                    ->get();
+                break;
+            case 'photoalbum':
+                $list = Photoalbum::joinTranslations('photoalbums')
+                    ->select('photoalbums.id', 'photoalbum_translations.title')
+                    ->get();
+                break;
+            case 'news':
+                $list = array(
+                    array(
+                        'id' => 'last_news',
+                        'title' => trans('labels.last_news'),
+                    ),
+                    array(
+                        'id' => 'random_news',
+                        'title' => trans('labels.random_news'),
+                    )
+                );
+                break;
         }
-        $parents = ['' => trans('labels.no')];
-        foreach ($list as $item) {
-            $parents[$item->id] = $item->name;
-        }
-        $this->data('parents', $parents);
+        return $list;
+    }
+
+    public function updatePageContents(Request $request){
+        $input = $request->all();
+
+        $model = Page::findOrFail($input['page_id']);
+
+        $model->contents = $input['contents'];
+
+        $model->update();
+
+        return 'done';
     }
 }

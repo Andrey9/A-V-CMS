@@ -114,7 +114,7 @@
                 </li>
             @endif
 
-            {{--@if ($user->hasAccess('textwidget.read'))
+            @if ($user->hasAccess('textwidget.read'))
                 <li class="{!! active_class('admin.text_widget*') !!}">
                     <a href="{!! route('admin.text_widget.index') !!}">
                         <i class="fa fa-font"></i>
@@ -131,7 +131,7 @@
                 </li>
             @endif
 
-            @if ($user->hasAccess('variablevalue.read'))
+            {{--@if ($user->hasAccess('variablevalue.read'))
                 <li class="{!! active_class('admin.variable*') !!}">
                     <a href="{!! route('admin.variable.value.index') !!}">
                         <i class="fa fa-cog"></i>

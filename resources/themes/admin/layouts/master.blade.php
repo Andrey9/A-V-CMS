@@ -36,13 +36,19 @@
 
         <link rel="stylesheet" href="{!! asset('packages/barryvdh/elfinder/css/elfinder.min.css') !!}"/>
 
+        <link rel="stylesheet" href="{!! asset('assets/components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css') !!}">
+
         <link rel="stylesheet" href="{!! Theme::asset('css/styles.css', null, true) !!}"/>
 
-        <script src="{!! asset('assets/components/jquery/dist/jquery.min.js') !!}"></script>
+        <script src="{!! asset('assets/components/jquery/dist/jquery.js') !!}"></script>
 
         <script src="{!! asset('assets/components/jquery-ui/jquery-ui.min.js') !!}"></script>
 
         <script src="{!! asset('packages/barryvdh/elfinder/js/elfinder.min.js') !!}"></script>
+
+        <script src="{!! asset('assets/components/bootstrap-switch/dist/js/bootstrap-switch.js') !!}"></script>
+
+        <script src="{!! asset('assets/components/jQuery UI Sortable/jquery-ui-sortable.js') !!}"></script>
 
         @section('assets.top')
             @include('partials.vars')
@@ -56,7 +62,7 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
-    <body class="skin-blue-light {!! !empty($body_css_class) ? $body_css_class : 'sidebar-mini' !!}">
+    <body class="skin-green-light {!! !empty($body_css_class) ? $body_css_class : 'sidebar-mini' !!}">
 
         <div class="wrapper">
             @yield('main')

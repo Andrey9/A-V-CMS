@@ -16,7 +16,7 @@ class CreatePhotoalbumTranslationsTable extends Migration
             $table->increments('id');
             $table->integer('photoalbum_id')->unsigned();
             $table->string('locale')->index();
-            $table->string('name')->nullable();
+            $table->string('title')->nullable();
             $table->text('short_content')->nullable();
             $table->text('content')->nullable();
 

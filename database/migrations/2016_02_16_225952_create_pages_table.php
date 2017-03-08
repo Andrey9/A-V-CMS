@@ -18,18 +18,15 @@ class CreatePagesTable extends Migration
             function (Blueprint $table) {
                 $table->increments('id');
 
-                $table->integer('parent_id')->nullable()->unsigned()->index();
-
                 $table->string('slug', 255);
                 $table->string('image', 255)->nullable();
                 $table->string('external_url', 255)->nullable();
                 $table->integer('position')->unsigned();
-                $table->integer('view_count')->default(0);
                 $table->boolean('status')->default(true);
+                $table->text('contents')->nullable();
+                $table->integer('template_id')->default(1);
 
                 $table->timestamps();
-
-                $table->foreign('parent_id')->references('id')->on('pages')->onDelete('set null')->onUpdate('cascade');
             }
         );
 
@@ -40,8 +37,6 @@ class CreatePagesTable extends Migration
                 $table->integer('page_id')->unsigned();
                 $table->string('locale')->index();
                 $table->string('name')->nullable();
-                $table->text('short_content')->nullable();
-                $table->text('content')->nullable();
 
                 $table->string('meta_title')->nullable();
                 $table->string('meta_keywords')->nullable();

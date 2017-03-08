@@ -31,6 +31,8 @@ $router->group(
                 $router->resource('group', 'Backend\GroupController');
 
                 // pages
+                $router->get('element-type-select', 'Backend\PageController@elementTypeSelect');
+                $router->post('update-page-contents', 'Backend\PageController@updatePageContents');
                 $router->post(
                     'page/{id}/ajax_field',
                     [
@@ -40,6 +42,7 @@ $router->group(
                     ]
                 );
                 $router->resource('page', 'Backend\PageController');
+
                 //photoalbums
                 $router->post(
                     'photoalbum/{id}/ajax_field',
@@ -50,6 +53,7 @@ $router->group(
                     ]
                 );
                 $router->resource('photoalbum', 'Backend\PhotoalbumController');
+
                 // tag
 //                $router->post(
 //                    'tag/{id}/ajax_field',
@@ -136,15 +140,15 @@ $router->group(
                 $router->resource('banner', 'Backend\BannerController');
 
                 // text_widgets
-//                $router->post(
-//                    'text_widget/{id}/ajax_field',
-//                    [
-//                        'middleware' => ['ajax'],
-//                        'as'         => 'admin.text_widget.ajax_field',
-//                        'uses'       => 'Backend\TextWidgetController@ajaxFieldChange',
-//                    ]
-//                );
-//                $router->resource('text_widget', 'Backend\TextWidgetController');
+                $router->post(
+                    'text_widget/{id}/ajax_field',
+                    [
+                        'middleware' => ['ajax'],
+                        'as'         => 'admin.text_widget.ajax_field',
+                        'uses'       => 'Backend\TextWidgetController@ajaxFieldChange',
+                    ]
+                );
+                $router->resource('text_widget', 'Backend\TextWidgetController');
 
                 // variables
 //                $router->post(

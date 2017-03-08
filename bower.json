@@ -29,6 +29,7 @@
     "components-font-awesome": "~4.5.0",
     "superslides": "*",
     "lightbox2": "*",
-    "css-hamburgers": "0.7.0"
+    "css-hamburgers": "0.7.0",
+    "jQuery UI Sortable": "jquery-ui-sortable#*"
   }
 }
