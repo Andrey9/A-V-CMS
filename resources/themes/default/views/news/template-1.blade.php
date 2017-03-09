@@ -1,12 +1,10 @@
-@extends('layouts.master')
-
-@section('content')
+<div id="news" class="news">
     <div class="container">
-        <div class="heading">
-            <h1>@lang('front_labels.news')</h1>
+        <div class="heading white">
+            <h1>@lang('labels.'.$elementType)</h1>
         </div>
         <div class="news_wrap">
-            @foreach($list as $item)
+            @foreach($model as $item)
                 <div class="new col-md-4">
                     <div class="news_heading">
                         <h3>{!! $item->title !!}</h3>
@@ -21,5 +19,6 @@
                 </div>
             @endforeach
         </div>
+        <a href="{!! route('news.index') !!}" class="show_more">@lang('front_labels.all_news')</a>
     </div>
-@stop
+</div>

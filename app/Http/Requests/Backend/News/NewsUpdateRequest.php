@@ -37,7 +37,7 @@ class NewsUpdateRequest extends FormRequest
         ];
 
         $languageRules = [
-            'name' => 'required',
+            'title' => 'required',
         ];
 
         foreach (config('app.locales') as $locale) {

@@ -12,6 +12,11 @@ use App\Http\Controllers\Controller;
 class PhotoalbumController extends FrontendController
 {
 
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
     public function show($slug = '')
     {
         $model = Photoalbum::with('translations')->visible()->whereSlug($slug)->first();

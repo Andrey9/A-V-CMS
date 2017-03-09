@@ -5,8 +5,12 @@ $router->group(
         $router->group(
             ['middleware' => 'admin.auth'],
             function ($router) {
-                $router->any('/', ['as' => 'admin.home', 'uses' => 'Backend\BackendController@getIndex']);
-                $router->any('/home', 'Backend\BackendController@getIndex');
+                $router->any('/', ['as' => 'admin.home', 'uses' => 'Backend\DashboardController@index']);
+                $router->any('/home', 'Backend\DashboardController@index');
+
+                //dashboard
+                $router->post('/dashboard/update', 'Backend\DashboardController@update');
+                $router->post('/dashboard/update-footer', 'Backend\DashboardController@updateFooter');
 
                 // users
                 $router->post(

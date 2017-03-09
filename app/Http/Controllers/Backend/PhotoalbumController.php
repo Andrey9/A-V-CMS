@@ -59,14 +59,14 @@ class PhotoalbumController extends BackendController
         if ($request->get('draw')) {
             $list = Photoalbum::withTranslations()->joinTranslations('photoalbums')->select(
                 'photoalbums.id',
-                'photoalbum_translations.name',
+                'photoalbum_translations.title',
                 'status',
                 'position'
             );
 
             return $dataTables = Datatables::of($list)
                 ->filterColumn('id', 'where', 'photoalbums.id', '=', '$1')
-                ->filterColumn('photoalbum_translations.name', 'where', 'photoalbum_translations.name', 'LIKE', '%$1%')
+                ->filterColumn('photoalbum_translations.title', 'where', 'photoalbum_translations.title', 'LIKE', '%$1%')
                 ->editColumn(
                     'status',
                     function ($model) {

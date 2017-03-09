@@ -46,6 +46,7 @@ class Page extends Eloquent implements FrontLink, SearchableContract, MetaGettab
         'position',
         'name',
         'image',
+        'contents',
         'meta_keywords',
         'meta_title',
         'meta_description',

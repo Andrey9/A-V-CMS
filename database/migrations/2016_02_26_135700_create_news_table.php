@@ -35,7 +35,7 @@ class CreateNewsTable extends Migration
                 $table->increments('id');
                 $table->integer('news_id')->unsigned();
                 $table->string('locale')->index();
-                $table->string('name')->nullable();
+                $table->string('title')->nullable();
                 $table->text('short_content')->nullable();
                 $table->text('content')->nullable();
 

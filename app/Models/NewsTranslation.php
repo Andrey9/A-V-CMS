@@ -26,7 +26,7 @@ class NewsTranslation extends Eloquent
      * @var array
      */
     protected $fillable = [
-        'name',
+        'title',
         'short_content',
         'content',
         'meta_keywords',

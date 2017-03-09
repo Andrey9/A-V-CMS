@@ -17,6 +17,7 @@ class PopulatePagesTable extends Migration
                 'slug'       => 'home',
                 'position'   => 0,
                 'status'     => 1,
+                'contents' => '[]',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]

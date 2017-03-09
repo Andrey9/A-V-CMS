@@ -4,7 +4,7 @@
     <div class="container">
         <div class="new col-md-12">
             <div class="news_heading">
-                <h3>{!! $model->name !!}</h3>
+                <h3>{!! $model->title !!}</h3>
             </div>
             <div class="posted_at">
                 <p>{!! \Carbon::parse($model->publish_at)->format('d.m.y') !!}</p>

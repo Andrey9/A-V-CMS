@@ -32,6 +32,7 @@ dev_path =
   coffee:__dirname.concat('/coffee/**.coffee')
   js:__dirname.concat('/js/**')
   sass: __dirname.concat('/sass/')
+  ccss: __dirname.concat('/css/**/* ')
 
 prod_path =
   fonts: projectRoot.concat('/public/assets/themes/' + theme + '/fonts/')
@@ -43,9 +44,9 @@ prod_path =
 
 # Export tasks #
 module.exports =
-  default: [theme.concat('::css'), theme.concat('::coffee'), theme.concat('::purejs'), theme.concat('::images'), theme.concat('::fonts'), theme.concat('::vendor')]
-  dev: [theme.concat('::css:dev'), theme.concat('::coffee:dev'), theme.concat('::purejs'), theme.concat('::images'), theme.concat('::fonts'), theme.concat('::vendor')]
-  watch: [theme.concat('::css:watch'), theme.concat('::coffee:watch'), theme.concat('::purejs:watch'), theme.concat('::images:watch'), theme.concat('::fonts:watch'), theme.concat('::vendor:watch')]
+  default: [theme.concat('::css'), theme.concat('::coffee'), theme.concat('::purejs'), theme.concat('::images'), theme.concat('::ccss'), theme.concat('::fonts'), theme.concat('::vendor')]
+  dev: [theme.concat('::css:dev'), theme.concat('::coffee:dev'), theme.concat('::purejs'), theme.concat('::images'), theme.concat('::ccss'), theme.concat('::fonts'), theme.concat('::vendor')]
+  watch: [theme.concat('::css:watch'), theme.concat('::coffee:watch'), theme.concat('::purejs:watch'), theme.concat('::images:watch'), theme.concat('::ccss:watch'), theme.concat('::fonts:watch'), theme.concat('::vendor:watch')]
 
 
 # SASS #
@@ -115,6 +116,15 @@ gulp.task theme.concat('::images'), ->
 
 gulp.task theme.concat('::images:watch'), ->
   gulp.watch dev_path.images , [theme.concat('::images')]
+
+gulp.task theme.concat('::ccss'), ->
+  gulp.src(dev_path.ccss)
+    .pipe(minifyCSS(removeEmpty: true).on('error', handleError))
+    .pipe(gulp.dest(prod_path.css))
+    .on('error', handleError)
+
+gulp.task theme.concat('::ccss:watch'), ->
+  gulp.watch dev_path.ccss , [theme.concat('::ccss')]
 
 # FONTS #
 gulp.task theme.concat('::fonts'), ->

@@ -71,4 +71,5 @@ class NewsController extends FrontendController
 
         return $this->render($this->module.'.show');
     }
+
 }

@@ -13,19 +13,19 @@ $router->group(
         $router->any('/not-found', ['as' => 'not_found', 'uses' => 'Frontend\PageController@notFound']);
 
         // pages
+        $router->get('/page/get-element', 'Frontend\PageController@getElement');
         $router->get(
             '/pages/{slug1?}/{slug2?}/{slug3?}/{slug4?}/{slug5?}',
             ['as' => 'pages.show', 'uses' => 'Frontend\PageController@getPage']
         );
-
         // news
         $router->get('news', ['as' => 'news.index', 'uses' => 'Frontend\NewsController@index']);
         $router->get('news/{slug}', ['as' => 'news.show', 'uses' => 'Frontend\NewsController@show']);
 
         //photoalbums
-
         $router->get('photoalbums/{slug}', ['as' => 'photoalbums.show', 'uses' => 'Frontend\PhotoalbumController@show']);
         $router->get('get_first_photos','Frontend\PhotoalbumController@get_first_photos');
+
 
         // comments
 //        $router->group(

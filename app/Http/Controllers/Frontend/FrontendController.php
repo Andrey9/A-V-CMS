@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Frontend;
 
 use Agent;
 use App\Http\Controllers\BaseController;
+use App\Models\Dashboard;
 use App\Models\User;
 use Config;
 use JavaScript;
@@ -62,6 +63,10 @@ class FrontendController extends BaseController
         if ($this->user) {
             $this->user->updateActivity();
         }
+
+        $dashboard = Dashboard::with('translations')->find(1);
+
+        $this->data('dashboard', $dashboard);
 
         $this->breadcrumbs(Config::get('app.name', ''), route('home'));
 

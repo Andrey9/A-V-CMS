@@ -1,5 +1,5 @@
 <div class="wide-container">
-    <div id="slides">
+    <div id="slides-{!! $model->id !!}">
         <ul class="slides-container">
             @foreach($model->visible_items as $item)
                 <li>
@@ -14,3 +14,11 @@
         </nav>
     </div>
 </div>
+<script>
+    $(function() {
+        $('#slides-{!! $model->id !!}').superslides({
+            inherit_width_from: '.wide-container',
+            inherit_height_from: '.wide-container'
+        });
+    });
+</script>

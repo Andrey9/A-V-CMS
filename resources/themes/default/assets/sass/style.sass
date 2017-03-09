@@ -325,7 +325,7 @@ header
   .right
     margin: 20px 0
     float: right
-    width: 79%
+    width: 100%
     .photo
       float: left
       margin-right: 10px
@@ -336,7 +336,7 @@ header
           width: 280px
           object-fit: cover
         .hover-wrap .overlay-text
-          font-size: 40px
+          font-size: 30px
   .show_more
     float: right
     right: 2%
@@ -390,7 +390,7 @@ footer
   background: #2e5d71
   color: #fff
   padding: 10px
-  h5 a
+  p a
     color: #fff
     font-weight: 900
   a:hover
@@ -432,12 +432,14 @@ footer
     left: 35px
     a
       margin-right: 15px
+      &:hover
+        text-decoration: none
       img
         width: 40px
         height: 25px
-      &:last-child img
-        -webkit-filter: grayscale(100%)
-        filter: grayscale(100%)
+      //&:last-child img
+      //  -webkit-filter: grayscale(100%)
+      //  filter: grayscale(100%)
 .page
   h3, h1, h2
     color: #fca930

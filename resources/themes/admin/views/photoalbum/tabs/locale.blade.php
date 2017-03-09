@@ -1,10 +1,10 @@
-<div class="form-group required @if ($errors->has($locale.'.name')) has-error @endif">
-    {!! Form::label($locale . '[name]', trans('labels.name'), ['class' => 'control-label col-xs-12 col-sm-3 col-md-2']) !!}
+<div class="form-group required @if ($errors->has($locale.'.title')) has-error @endif">
+    {!! Form::label($locale . '[title]', trans('labels.title'), ['class' => 'control-label col-xs-12 col-sm-3 col-md-2']) !!}
 
     <div class="col-xs-8 col-sm-7 col-md-10">
-        {!! Form::text($locale.'[name]', isset($model->translate($locale)->name) ? $model->translate($locale)->name : '', ['placeholder'=> trans('labels.name'), 'required' => true, 'class' => 'form-control input-sm name_'.$locale]) !!}
+        {!! Form::text($locale.'[title]', isset($model->translate($locale)->title) ? $model->translate($locale)->title : '', ['placeholder'=> trans('labels.title'), 'required' => true, 'class' => 'form-control input-sm title_'.$locale]) !!}
 
-        {!! $errors->first($locale.'.name', '<p class="help-block error">:message</p>') !!}
+        {!! $errors->first($locale.'.title', '<p class="help-block error">:message</p>') !!}
     </div>
 </div>
 

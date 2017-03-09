@@ -42,13 +42,13 @@
 
         <script src="{!! asset('assets/components/jquery/dist/jquery.js') !!}"></script>
 
-        <script src="{!! asset('assets/components/jquery-ui/jquery-ui.min.js') !!}"></script>
-
-        <script src="{!! asset('packages/barryvdh/elfinder/js/elfinder.min.js') !!}"></script>
-
         <script src="{!! asset('assets/components/bootstrap-switch/dist/js/bootstrap-switch.js') !!}"></script>
 
         <script src="{!! asset('assets/components/jQuery UI Sortable/jquery-ui-sortable.js') !!}"></script>
+
+        <script src="{!! asset('assets/components/jquery-ui/jquery-ui.min.js') !!}"></script>
+
+        <script src="{!! asset('packages/barryvdh/elfinder/js/elfinder.min.js') !!}"></script>
 
         @section('assets.top')
             @include('partials.vars')

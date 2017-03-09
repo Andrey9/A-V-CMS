@@ -92,7 +92,7 @@ class NewsController extends BackendController
         if ($request->get('draw')) {
             $list = News::withTranslations()->joinTranslations('news', 'news_translations')->select(
                 'news.id',
-                'news_translations.name',
+                'news_translations.title',
                 'status',
                 'position',
                 'slug'
@@ -100,7 +100,7 @@ class NewsController extends BackendController
 
             return $dataTables = Datatables::of($list)
                 ->filterColumn('id', 'where', 'news.id', '=', '$1')
-                ->filterColumn('news_translations.name', 'where', 'news_translations.name', 'LIKE', '%$1%')
+                ->filterColumn('news_translations.title', 'where', 'news_translations.title', 'LIKE', '%$1%')
                 ->editColumn(
                     'status',
                     function ($model) {
@@ -229,7 +229,7 @@ class NewsController extends BackendController
         try {
             $model = News::with('translations', 'tags')->whereId($id)->firstOrFail();
 
-            $this->data('page_title', '"'.$model->name.'"');
+            $this->data('page_title', '"'.$model->title.'"');
 
             $this->breadcrumbs(trans('labels.news_editing'));
 

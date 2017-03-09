@@ -231,11 +231,12 @@ class PageController extends BackendController
         }
 
         $input = $request->all();
-        $input['parent_id'] = isset($input['parent_id']) ? $input['parent_id'] : null;
 
         DB::beginTransaction();
 
         try {
+
+//            dd($input);
             $model->fill($input);
 
             $model->update();
@@ -289,6 +290,7 @@ class PageController extends BackendController
             '_token' => csrf_token(),
             'slug' => 'New',
             'position' => '0',
+            'contents' => '[]',
             'ru' => array(
                 'name' => ''
             ),

@@ -34,7 +34,7 @@ class News extends Eloquent implements FrontLink, SearchableContract, MetaGettab
      * @var array
      */
     public $translatedAttributes = [
-        'name',
+        'title',
         'short_content',
         'content',
         'meta_keywords',
@@ -49,7 +49,7 @@ class News extends Eloquent implements FrontLink, SearchableContract, MetaGettab
         'slug',
         'status',
         'position',
-        'name',
+        'title',
         'image',
         'short_content',
         'content',

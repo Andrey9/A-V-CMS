@@ -81,7 +81,10 @@
     }
     .component h4{
         display: inline-block;
-        margin: 10px 50px;
+        margin: 10px 10px;
+        width: 200px;
+        overflow: hidden;
+
     }
     .component .controls{
         float: right;
@@ -118,7 +121,7 @@
                 page_id: components.data('id')
             }
         }).done(function(response){
-            console.log(response);
+//            console.log(response);
         })
     }
 
@@ -131,7 +134,7 @@
                 "elementType": $(this).find('input[name=element-type]').val(),
                 "elementIdText": $(this).find('h4.id').text(),
                 "elementId": $(this).find('input[name=element-id]').val(),
-                "status": $(this).find('input[name=status]').data('value'),
+                "status": $(this).find('input[name=element-status]').data('value')
 //                "position": parseInt($(this).find('input[name=position]').val())
             };
             json.push(component);
@@ -196,9 +199,9 @@
 //        html += '<input type="hidden" name="position" value="'+ item.position +'">';
         html += '<div class="controls">';
         if (item.status){
-            html += '<input name="status" type="checkbox" class="element-status-switch" checked data-value="'+ item.status +'">';
+            html += '<input name="element-status" type="checkbox" class="element-status-switch" checked data-value="'+ item.status +'">';
         }else{
-            html += '<input name="status" type="checkbox" class="element-status-switch" data-value="'+ item.status +'">';
+            html += '<input name="element-status" type="checkbox" class="element-status-switch" data-value="'+ item.status +'">';
         }
         html += '<button class="delete-component btn btn-danger btn-flat"><span class="glyphicon glyphicon-remove"></span></button>';
         html += '</div>';
@@ -230,7 +233,7 @@
     });
 
     $(document).on('click', '.bootstrap-switch-wrapper', function(){
-        var value = $(this).find('input[name=status]');
+        var value = $(this).find('input[name=element-status]');
         value.data('value',!value.data('value'));
         console.log(value.data('value'));
         sendChanges();
