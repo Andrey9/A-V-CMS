@@ -6,5 +6,8 @@
         <div class="sub_heading clearfix col-lg-12 col-md-12 col-sm-12 col-xs-12">
             {!! $model->content !!}
         </div>
+        <style>
+            .sub_heading a:hover{text-decoration: none}
+        </style>
     </div>
 </div>

@@ -21,8 +21,8 @@ class PhotoalbumController extends FrontendController
     {
         $model = Photoalbum::with('translations')->visible()->whereSlug($slug)->first();
         abort_if(!$model, 404);
-
-        return view('views.photoalbum.show')->with('model',$model);
+        $this->data('model', $model);
+        return $this->render('views.photoalbum.show');
 
     }
 

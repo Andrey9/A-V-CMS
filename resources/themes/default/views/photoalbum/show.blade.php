@@ -3,7 +3,7 @@
 @section('content')
     <div class="page">
         <div class="container">
-            <h1>{!! $model->getTitle() !!}</h1>
+            <h1>{!! $model->title !!}</h1>
             <hr>
             @foreach($model->items as $item)
                 <div class="photo">
@@ -18,4 +18,7 @@
             @endforeach
         </div>
     </div>
+    <script>
+        overlay_width_calc()
+    </script>
 @stop

@@ -231,7 +231,7 @@ return array (
   'read_also' => 'Читайте також',
   'register' => 'Зареєструватися',
   'registration' => 'Реєстрація',
-  'remember_me' => 'Запамятати меня',
+  'remember_me' => 'Запам`ятати мене',
   'remember_password' => 'Згадали пароль?',
   'remove' => 'Видалити',
   'remove_avatar' => 'видалити аватар',

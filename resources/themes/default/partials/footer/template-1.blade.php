@@ -101,7 +101,7 @@
     body{
         background: #daffff;
     }
-    #body{
+    #body, .page{
         margin-bottom: 50px;
     }
     footer{
