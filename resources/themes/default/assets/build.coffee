@@ -18,7 +18,7 @@ plumber = require 'gulp-plumber'
 # get the theme name
 theme = path.basename(path.dirname(__dirname))
 
-projectRoot = __dirname.slice(0, __dirname.indexOf('/resources/'))
+projectRoot = __dirname
 
 console.log(projectRoot);
 
@@ -35,11 +35,11 @@ dev_path =
   ccss: __dirname.concat('/css/**/* ')
 
 prod_path =
-  fonts: projectRoot.concat('/public/assets/themes/' + theme + '/fonts/')
-  vendor: projectRoot.concat('/public/assets/themes/' + theme + '/vendor/')
-  images: projectRoot.concat('/public/assets/themes/' + theme + '/img/')
-  js:     projectRoot.concat('/public/assets/themes/' + theme + '/js/')
-  css:    projectRoot.concat('/public/assets/themes/' + theme + '/css/')
+  fonts: projectRoot.concat('/../../../../public/assets/themes/' + theme + '/fonts/')
+  vendor: projectRoot.concat('/../../../../public/assets/themes/' + theme + '/vendor/')
+  images: projectRoot.concat('/../../../../public/assets/themes/' + theme + '/img/')
+  js:     projectRoot.concat('/../../../../public/assets/themes/' + theme + '/js/')
+  css:    projectRoot.concat('/../../../../public/assets/themes/' + theme + '/css/')
 
 
 # Export tasks #
