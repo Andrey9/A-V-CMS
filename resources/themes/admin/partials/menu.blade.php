@@ -18,6 +18,21 @@
                 </li>
             @endif
 
+            @if ($user->hasAccess('teacher.read'))
+                <li class="{!! active_class('admin.teacher*') !!}">
+                    <a href="{!! route('admin.teacher.index') !!}">
+                        <i class="fa fa-graduation-cap"></i>
+                        <span>@lang('labels.teachers')</span>
+
+                        @if ($user->hasAccess('teacher.create'))
+                            <small class="label create-label pull-right bg-green" title="@lang('labels.add_teacher')"
+                                   data-href="{!! route('admin.teacher.create') !!}">
+                                <i class="fa fa-plus"></i>
+                            </small>
+                        @endif
+                    </a>
+                </li>
+            @endif
             {{--@if ($user->hasAccess('tag.read'))
                 <li class="{!! active_class('admin.tag*') !!}">
                     <a href="{!! route('admin.tag.index') !!}">
@@ -114,7 +129,7 @@
                 </li>
             @endif
 
-            {{--@if ($user->hasAccess('textwidget.read'))
+            @if ($user->hasAccess('textwidget.read'))
                 <li class="{!! active_class('admin.text_widget*') !!}">
                     <a href="{!! route('admin.text_widget.index') !!}">
                         <i class="fa fa-font"></i>
@@ -131,14 +146,14 @@
                 </li>
             @endif
 
-            @if ($user->hasAccess('variablevalue.read'))
-                <li class="{!! active_class('admin.variable*') !!}">
-                    <a href="{!! route('admin.variable.value.index') !!}">
-                        <i class="fa fa-cog"></i>
-                        <span>@lang('labels.variables')</span>
-                    </a>
-                </li>
-            @endif--}}
+            {{--@if ($user->hasAccess('variablevalue.read'))--}}
+                {{--<li class="{!! active_class('admin.variable*') !!}">--}}
+                    {{--<a href="{!! route('admin.variable.value.index') !!}">--}}
+                        {{--<i class="fa fa-cog"></i>--}}
+                        {{--<span>@lang('labels.variables')</span>--}}
+                    {{--</a>--}}
+                {{--</li>--}}
+            {{--@endif--}}
 
             {{--@if ($user->hasAccess('comments.read'))
                 <li class="{!! active_class('admin.comment*') !!}">

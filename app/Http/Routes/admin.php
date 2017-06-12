@@ -72,6 +72,16 @@ $router->group(
                 );
                 $router->resource('news', 'Backend\NewsController');
 
+                // teachers
+                $router->post(
+                    'teacher/{id}/ajax_field',
+                    [
+                        'middleware' => ['ajax'],
+                        'as'         => 'admin.teacher.ajax_field',
+                        'uses'       => 'Backend\TeacherController@ajaxFieldChange',
+                    ]
+                );
+                $router->resource('teacher', 'Backend\TeacherController');
                 // articles
 //                $router->post(
 //                    'article/{id}/ajax_field',
@@ -135,16 +145,16 @@ $router->group(
                 );
                 $router->resource('banner', 'Backend\BannerController');
 
-                // text_widgets
-//                $router->post(
-//                    'text_widget/{id}/ajax_field',
-//                    [
-//                        'middleware' => ['ajax'],
-//                        'as'         => 'admin.text_widget.ajax_field',
-//                        'uses'       => 'Backend\TextWidgetController@ajaxFieldChange',
-//                    ]
-//                );
-//                $router->resource('text_widget', 'Backend\TextWidgetController');
+                //text_widgets
+                $router->post(
+                    'text_widget/{id}/ajax_field',
+                    [
+                        'middleware' => ['ajax'],
+                        'as'         => 'admin.text_widget.ajax_field',
+                        'uses'       => 'Backend\TextWidgetController@ajaxFieldChange',
+                    ]
+                );
+                $router->resource('text_widget', 'Backend\TextWidgetController');
 
                 // variables
 //                $router->post(

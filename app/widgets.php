@@ -23,3 +23,5 @@ Widget::register('widget__banner', 'App\Widgets\Banner\BannerWidget@index');
 Widget::register('widget__last_news', 'App\Widgets\LastNews\LastNewsWidget@index');
 
 Widget::register('widget__photoalbums', 'App\Widgets\Photoalbum\PhotoalbumWidget@index');
+
+Widget::register('widget__teacher', 'App\Widgets\Teacher\TeacherWidget@index');

@@ -1,20 +1,36 @@
-@if(isset($photoalbums))
-    <div id="photoalbums" class="photoalbums">
+@if(!empty($photoalbums))
+    <!-- About Section -->
+    <div id="about" class="{!! $type !!}">
         <div class="container">
-            <h1 class="heading yellow">@lang('front_labels.photoalbums')</h1>
-            <section class="left">
-                <div class="menu">
-                    @foreach($photoalbums as $photoalbum)
-                        <a class="get_first_photos" data-id="{!! $photoalbum->id !!}" href="{!! route('photoalbums.show',$photoalbum->slug) !!}">{!! $photoalbum->name !!}</a>
-                    @endforeach
+            <!-- Title Page -->
+            <div class="row">
+                <div class="span12">
+                    <div class="title-page">
+                        <h2 class="title">@lang('labels.photoalbums')</h2>
+                    </div>
                 </div>
-            </section>
-            <section class="right">
-                <div class="photos" id="first_photos">
-                </div>
-            </section>
-            <div class="clearfix"></div>
-            <a href="#" id="show_full_album" class="show_more">@lang('front_labels.full_album')</a>
+            </div>
+            <!-- End Title Page -->
+
+            <!-- People -->
+            <div class="row">
+                @foreach($photoalbums as $item)
+                    <!-- Start Profile -->
+                    <div class="span4">
+                        <a href="{!! route('photoalbum.show', ['slug' => $item->slug]) !!}">
+                            <div class="image-wrap">
+                                <img src="{!! $item->items[0]->image !!}" alt="{!! $item->name !!}">
+                            </div>
+                            <h3 class="profile-name">{!! $item->name !!}</h3>
+                        </a>
+                    </div>
+                    <!-- End Profile -->
+                @endforeach
+
+            </div>
+            <a href="{!! route('news.index') !!}" class="button" style="margin-top: 20px;">@lang('labels.all_photoalbums')</a>
+            <!-- End People -->
         </div>
     </div>
+    <!-- End About Section -->
 @endif

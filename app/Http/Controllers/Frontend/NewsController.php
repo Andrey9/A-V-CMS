@@ -45,9 +45,14 @@ class NewsController extends FrontendController
      */
     public function index()
     {
-        $this->data('list', $this->newsService->getList());
+        $model = new \ArrayObject();
+        $model->meta_title = trans('labels.news');
+        $model->meta_description = trans('labels.news');
+        $model->meta_keywords = trans('labels.news');
+        $model->image = '';
+        $this->data('model', $model);
 
-        $this->data('title', trans('labels.news'));
+        $this->data('list', $this->newsService->getList());
 
         return $this->render($this->module.'.index');
     }

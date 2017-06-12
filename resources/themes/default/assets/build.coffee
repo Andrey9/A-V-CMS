@@ -28,29 +28,30 @@ handleError = (err)->
 dev_path =
   fonts: __dirname.concat('/fonts/**')
   vendor: __dirname.concat('/vendor/**')
-  images: __dirname.concat('/img/**')
+  img: __dirname.concat('/img/**')
   coffee:__dirname.concat('/coffee/**.coffee')
   js:__dirname.concat('/js/**')
   sass: __dirname.concat('/sass/')
+  ccss: __dirname.concat('/css/**/*')
 
 prod_path =
   fonts: projectRoot.concat('/public/assets/themes/' + theme + '/fonts/')
   vendor: projectRoot.concat('/public/assets/themes/' + theme + '/vendor/')
-  images: projectRoot.concat('/public/assets/themes/' + theme + '/img/')
+  img: projectRoot.concat('/public/assets/themes/' + theme + '/img/')
   js:     projectRoot.concat('/public/assets/themes/' + theme + '/js/')
   css:    projectRoot.concat('/public/assets/themes/' + theme + '/css/')
 
 
 # Export tasks #
 module.exports =
-  default: [theme.concat('::css'), theme.concat('::coffee'), theme.concat('::purejs'), theme.concat('::images'), theme.concat('::fonts'), theme.concat('::vendor')]
-  dev: [theme.concat('::css:dev'), theme.concat('::coffee:dev'), theme.concat('::purejs'), theme.concat('::images'), theme.concat('::fonts'), theme.concat('::vendor')]
-  watch: [theme.concat('::css:watch'), theme.concat('::coffee:watch'), theme.concat('::purejs:watch'), theme.concat('::images:watch'), theme.concat('::fonts:watch'), theme.concat('::vendor:watch')]
+  default: [theme.concat('::css'), theme.concat('::coffee'), theme.concat('::purejs'), theme.concat('::img'), theme.concat('::fonts'), theme.concat('::ccss'), theme.concat('::vendor')]
+  dev: [theme.concat('::css:dev'), theme.concat('::coffee:dev'), theme.concat('::purejs'), theme.concat('::img'), theme.concat('::fonts'), theme.concat('::ccss'), theme.concat('::vendor')]
+  watch: [theme.concat('::css:watch'), theme.concat('::coffee:watch'), theme.concat('::purejs:watch'), theme.concat('::img:watch'), theme.concat('::fonts:watch'), theme.concat('::ccss:watch'), theme.concat('::vendor:watch')]
 
 
 # SASS #
 gulp.task theme.concat("::css"), ->
-  gulp.src(dev_path.sass.concat("*.sass"))
+  gulp.src(dev_path.sass.concat("*.scss"))
   .pipe(plumber())
   .pipe(sass({ style: 'expanded' }))
   .pipe(prefix())
@@ -61,7 +62,7 @@ gulp.task theme.concat("::css"), ->
 
 
 gulp.task theme.concat('::css:dev'), ->
-  gulp.src(dev_path.sass.concat('*.sass'))
+  gulp.src(dev_path.sass.concat('*.scss'))
   .pipe(plumber())
   .pipe(sass({ style: 'expanded' }))
   .pipe(prefix())
@@ -70,7 +71,17 @@ gulp.task theme.concat('::css:dev'), ->
   .on('error', plumber)
 
 gulp.task theme.concat('::css:watch'), ->
-  gulp.watch dev_path.sass.concat('**/*.sass') , [theme.concat('::css:dev')]
+  gulp.watch dev_path.sass.concat('**/*.scss') , [theme.concat('::css:dev')]
+
+# CSS #
+gulp.task theme.concat('::ccss'), ->
+  gulp.src(dev_path.ccss)
+    .pipe(minifyCSS(removeEmpty: true).on('error', handleError))
+    .pipe(gulp.dest(prod_path.css))
+    .on('error', handleError)
+
+gulp.task theme.concat('::ccss:watch'), ->
+  gulp.watch dev_path.ccss , [theme.concat('::ccss')]
 
 # COFFEE #
 gulp.task theme.concat('::coffee'), ->
@@ -105,16 +116,16 @@ gulp.task theme.concat('::purejs:watch'), ->
   gulp.watch dev_path.js.concat('/*.js'), [theme.concat('::purejs')]
 
 
-# IMAGES #
-gulp.task theme.concat('::images'), ->
-  gulp.src(dev_path.images)
+# img #
+gulp.task theme.concat('::img'), ->
+  gulp.src(dev_path.img)
   .pipe(plumber())
 #  .pipe(imagemin())
-  .pipe(gulp.dest(prod_path.images))
+  .pipe(gulp.dest(prod_path.img))
   .on('error', plumber)
 
-gulp.task theme.concat('::images:watch'), ->
-  gulp.watch dev_path.images , [theme.concat('::images')]
+gulp.task theme.concat('::img:watch'), ->
+  gulp.watch dev_path.img , [theme.concat('::img')]
 
 # FONTS #
 gulp.task theme.concat('::fonts'), ->

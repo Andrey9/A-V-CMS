@@ -1,17 +1,28 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="container">
-        <div class="new col-md-12">
-            <div class="news_heading">
-                <h3>{!! $model->name !!}</h3>
+    <!-- Our Work Section -->
+    <div id="work" class="page">
+        <div class="container">
+            <!-- Portfolio Projects -->
+            <div class="row">
+                <div class="span9">
+                    <div class="row">
+                        <div class="title-page text-widget">
+                            <h2 class="title">{!! $model->name !!}</h2>
+                            <p>{!! \Carbon::parse($model->publish_at)->format('d.m.y') !!}</p>
+                            <div class="content">{!! $model->content !!}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="span3">
+                    <!-- Filter -->
+                {!! Widget::widget__photoalbums('', 'sidebar', 3) !!}
+                <!-- End Filter -->
+                </div>
             </div>
-            <div class="posted_at">
-                <p>{!! \Carbon::parse($model->publish_at)->format('d.m.y') !!}</p>
-            </div>
-            <div class="content">
-                <p>{!! $model->getContent() !!}</p>
-            </div>
+            <!-- End Portfolio Projects -->
         </div>
     </div>
+    <!-- End Our Work Section -->
 @stop

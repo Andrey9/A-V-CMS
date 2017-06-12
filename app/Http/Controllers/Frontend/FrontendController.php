@@ -123,6 +123,8 @@ class FrontendController extends BaseController
                 'no_image'                           => 'http://www.placehold.it/250x250/EFEFEF/AAAAAA&text=no+image',
                 'no_image_user'                      => config('user.no_image'),
                 'is_mobile'                          => Agent::isMobile(),
+                'look_on_map'                        => trans('labels.look_on_map'),
+                'hide_map'                           => trans('labels.hide_map')
             ]
         );
 

@@ -22,11 +22,11 @@ class TextWidgetWidget extends Widget
      * @param string $position
      * @param string $delimiter
      */
-    function index($position, $delimiter = '')
+    function index($position, $type, $delimiter = '')
     {
-        $list = TextWidget::where('layout_position', $position)->visible()->positionSorted()->get();
+        $widget = TextWidget::where('layout_position', $position)->visible()->positionSorted()->first();
 
-        return View::make('widgets.text_widget.index')->with(compact("list", "delimiter"));
+        return View::make('widgets.text_widget.index')->with(compact("widget", "delimiter","type"));
     }
 }
  
