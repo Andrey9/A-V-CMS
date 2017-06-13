@@ -11,6 +11,21 @@ use App\Http\Controllers\Controller;
 
 class PhotoalbumController extends FrontendController
 {
+    public $module = 'photoalbum';
+
+    public function index()
+    {
+        $model = new \ArrayObject();
+        $model->meta_title = trans('labels.photoalbums');
+        $model->meta_description = trans('labels.photoalbums');
+        $model->meta_keywords = trans('labels.photoalbums');
+        $model->image = '';
+        $this->data('model', $model);
+        $list = Photoalbum::with(['translations','items'])->get();
+        $this->data('list', $list);
+
+        return $this->render($this->module.'.index');
+    }
 
     public function show($slug = '')
     {

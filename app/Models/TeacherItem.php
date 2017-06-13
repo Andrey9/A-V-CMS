@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Traits\Models\WithTranslationsTrait;
 use Dimsav\Translatable\Translatable;
+use Illuminate\Database\Eloquent\Model;
 
-class Teacher extends Model
+class TeacherItem extends Model
 {
     use WithTranslationsTrait;
     use Translatable;
@@ -15,31 +15,26 @@ class Teacher extends Model
 
     public $translatedAttributes = [
         'name',
-        'description'
+        'content'
     ];
 
     protected $fillable = [
-        'slug',
+        'teacher_id',
         'status',
         'position',
-        'image',
         'name',
-        'description'
+        'content'
     ];
 
-    public function items(){
-        return $this->hasMany('App\Models\TeacherItem', 'teacher_id');
+    public function teacher(){
+        return $this->belongsTo('App\Models\Teacher', 'teacher_id');
     }
 
-    public function visible_items(){
-        return $this->items()->visible();
+    public function scopeVisible($query){
+        return $query->where('status', true);
     }
 
     public function scopePositionSorted($query, $order = 'ASC'){
         return $query->orderBy('position', $order);
-    }
-
-    public function scopeVisible($query){
-        return $query->where('status',true);
     }
 }

@@ -23,10 +23,12 @@ $router->group(
         $router->get('news/{slug}', ['as' => 'news.show', 'uses' => 'Frontend\NewsController@show']);
 
         //photoalbums
-
-        $router->get('photoalbum/{slug}', ['as' => 'photoalbum.show', 'uses' => 'Frontend\PhotoalbumController@show']);
+        $router->get('/photoalbum', ['as' => 'photoalbum.index', 'uses' => 'Frontend\PhotoalbumController@index']);
+        $router->get('/photoalbum/{slug}', ['as' => 'photoalbum.show', 'uses' => 'Frontend\PhotoalbumController@show']);
         $router->get('get_first_photos','Frontend\PhotoalbumController@get_first_photos');
 
+        //teachers
+        $router->get('/teacher/{slug}', ['as' => 'teacher.show', 'uses' => 'Frontend\TeacherController@show']);
         // comments
 //        $router->group(
 //            [

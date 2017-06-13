@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Teacher;
+use App\Models\TeacherItem;
 use App\Traits\Controllers\AjaxFieldsChangerTrait;
 use Illuminate\Http\Request;
 
@@ -150,6 +151,8 @@ class TeacherController extends BackendController
 
             $model->save();
 
+            $this->_processItems($model);
+
             DB::commit();
 
             FlashMessages::add('success', trans('messages.save_ok'));
@@ -224,6 +227,8 @@ class TeacherController extends BackendController
 
             $model->update();
 
+            $this->_processItems($model);
+
             DB::commit();
 
             FlashMessages::add('success', trans('messages.save_ok'));
@@ -271,5 +276,47 @@ class TeacherController extends BackendController
     private function _fillAdditionTemplateData($model = null)
     {
         return true;
+    }
+
+    private function _processItems(Teacher $model)
+    {
+        $data = request('items.remove', []);
+        foreach ($data as $id) {
+            try {
+                $item = $model->items()->findOrFail($id);
+                $item->delete();
+            } catch (Exception $e) {
+                FlashMessages::add("error", trans("messages.item destroy failure"." ".$id.". ".$e->getMessage()));
+                continue;
+            }
+        }
+
+        $data = request('items.old', []);
+        foreach ($data as $key => $item) {
+            try {
+                $_item = TeacherItem::findOrFail($key);
+                $_item->update($item);
+            } catch (Exception $e) {
+                FlashMessages::add(
+                    "error",
+                    trans("messages.item update failure"." ".$item['name'].". ".$e->getMessage())
+                );
+                continue;
+            }
+        }
+
+        $data = request('items.new', []);
+        foreach ($data as $item) {
+            try {
+                $item = new TeacherItem($item);
+                $model->items()->save($item);
+            } catch (Exception $e) {
+                FlashMessages::add(
+                    "error",
+                    trans("messages.item save failure"." ".$item['name'].". ".$e->getMessage())
+                );
+                continue;
+            }
+        }
     }
 }

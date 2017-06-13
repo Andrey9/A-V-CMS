@@ -18,7 +18,7 @@
                 @foreach($teachers as $teacher)
                     <!-- Start Profile -->
                     <div class="span4 profile">
-                        <a href="/">
+                        <a href="{!! route('teacher.show', ['slug' => $teacher->slug]) !!}">
                             <div class="image-wrap">
                                 <div class="hover-wrap">
                                     <span class="overlay-img"></span>

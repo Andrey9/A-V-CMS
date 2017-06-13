@@ -17,6 +17,10 @@
                 <li>
                     <a aria-expanded="false" href="#general" data-toggle="tab">@lang('labels.tab_general')</a>
                 </li>
+
+                <li>
+                    <a aria-expanded="false" href="#items" data-toggle="tab">@lang('labels.tab_additional_info')</a>
+                </li>
             </ul>
 
             <div class="tab-content">
@@ -28,6 +32,10 @@
 
                 <div class="tab-pane" id="general">
                     @include('teacher.tabs.general')
+                </div>
+
+                <div class="tab-pane" id="items">
+                    @include('teacher.tabs.items')
                 </div>
             </div>
         </div>

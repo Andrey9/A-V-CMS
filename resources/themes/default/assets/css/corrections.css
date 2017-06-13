@@ -178,3 +178,23 @@ footer{
 .fancybox-nav:hover span{
     background-color: #4682b4;
 }
+.span3.teacher-photo{
+    width: 166px;
+    margin-top: 50px;
+}
+.span9.teacher-description h3{
+    font-size: 1.5em;
+    margin-top: 50px;
+}
+.span3.teacher-photo img{
+    width: 100%;
+}
+@media (max-width: 768px) {
+    .span3.teacher-photo{
+        margin: 50px auto 20px;
+    }
+    .span9.teacher-description h3{
+        text-align: center;
+        margin-top: 20px;
+    }
+}

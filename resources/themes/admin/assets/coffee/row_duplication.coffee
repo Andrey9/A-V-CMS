@@ -16,6 +16,13 @@ window.duplicate_row = ($this) ->
     $(this).attr('name',  $(this).data('name'))
     if $(this).data 'required'
       $(this).attr('required',  $(this).data('required'))
+  $nrow.find('.content-textarea').each () ->
+    CKEDITOR.replace(
+      $(this).attr('id'),
+      {
+        filebrowserImageBrowseUrl: $(this).data('route')
+      }
+    )
 
   fixCustomInputs($nrow)
 
