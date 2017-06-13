@@ -43,6 +43,7 @@ nav#menu #menu-nav li.current a, nav#menu #menu-nav li a:hover{
 }
 #home-slider .control-nav{
     background: #dfe4ef;
+    z-index: 101;
 }
 #home-slider #nextslide, #home-slider #prevslide{
     background-color: #4682b4;
@@ -197,4 +198,43 @@ footer{
         text-align: center;
         margin-top: 20px;
     }
+}
+#choose-lang{
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: -148px;
+    width: 200px;
+    height: 50px;
+    background: #97aad0;
+    z-index: 100;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease ;
+    -ms-transition: all 0.5s ease ;
+    -o-transition: all 0.5s ease ;
+    transition: all 0.5s ease ;
+}
+#choose-lang.active{
+    left: 0;
+}
+#choose-lang .open-link{
+    color: #ffffff;
+}
+#choose-lang a.open-link{
+    position: relative;
+    left: 162px;
+    top: 13px;
+}
+#choose-lang .locales{
+    width: 110px;
+    position: relative;
+    top: -18px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+#choose-lang .locales a{
+    margin-left: 20px;
+}
+#choose-lang .locales a.active{
+    color: #ffffff;
 }
