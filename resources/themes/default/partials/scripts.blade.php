@@ -8,6 +8,7 @@
 <script src="{!! Theme::asset('/js/jquery.fancybox-media.js') !!}"></script>
 <script src="{!! Theme::asset('/js/jquery.tweet.js') !!}"></script>
 <script src="{!! Theme::asset('/js/plugins.js') !!}"></script>
+<script src="{!! Theme::asset('/js/placeholder.js') !!}"></script>
 <script src="{!! Theme::asset('/js/main.js') !!}"></script>
 <script>
     $('header').css({'display' : 'block'});

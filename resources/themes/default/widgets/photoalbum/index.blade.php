@@ -19,7 +19,7 @@
                     <div class="span4">
                         <a href="{!! route('photoalbum.show', ['slug' => $item->slug]) !!}">
                             <div class="image-wrap">
-                                <img src="{!! $item->items[0]->image !!}" alt="{!! $item->name !!}">
+                                <img src="{!! thumb($item->items[0]->image, 300, 220) !!}" alt="{!! $item->name !!}">
                             </div>
                             <h3 class="profile-name">{!! $item->name !!}</h3>
                         </a>
@@ -28,7 +28,7 @@
                 @endforeach
 
             </div>
-            <a href="{!! route('news.index') !!}" class="button" style="margin-top: 20px;">@lang('labels.all_photoalbums')</a>
+            <a href="{!! route('photoalbum.index') !!}" class="button" style="margin-top: 20px;">@lang('labels.all_photoalbums')</a>
             <!-- End People -->
         </div>
     </div>

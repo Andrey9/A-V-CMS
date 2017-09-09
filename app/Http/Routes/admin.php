@@ -40,6 +40,7 @@ $router->group(
                     ]
                 );
                 $router->resource('page', 'Backend\PageController');
+
                 //photoalbums
                 $router->post(
                     'photoalbum/{id}/ajax_field',
@@ -50,16 +51,6 @@ $router->group(
                     ]
                 );
                 $router->resource('photoalbum', 'Backend\PhotoalbumController');
-                // tag
-//                $router->post(
-//                    'tag/{id}/ajax_field',
-//                    [
-//                        'middleware' => ['ajax'],
-//                        'as'         => 'admin.tag.ajax_field',
-//                        'uses'       => 'Backend\TagController@ajaxFieldChange',
-//                    ]
-//                );
-//                $router->resource('tag', 'Backend\TagController');
 
                 // news
                 $router->post(
@@ -71,57 +62,6 @@ $router->group(
                     ]
                 );
                 $router->resource('news', 'Backend\NewsController');
-
-                // teachers
-                $router->post(
-                    'teacher/{id}/ajax_field',
-                    [
-                        'middleware' => ['ajax'],
-                        'as'         => 'admin.teacher.ajax_field',
-                        'uses'       => 'Backend\TeacherController@ajaxFieldChange',
-                    ]
-                );
-                $router->resource('teacher', 'Backend\TeacherController');
-                // articles
-//                $router->post(
-//                    'article/{id}/ajax_field',
-//                    [
-//                        'middleware' => ['ajax'],
-//                        'as'         => 'admin.article.ajax_field',
-//                        'uses'       => 'Backend\ArticleController@ajaxFieldChange',
-//                    ]
-//                );
-//                $router->resource(
-//                    'article',
-//                    'Backend\ArticleController',
-//                    ['only' => ['index', 'edit', 'update', 'destroy']]
-//                );
-
-//                // comments
-//                $router->post(
-//                    'comment/{id}/ajax_field',
-//                    array (
-//                        'middleware' => ['ajax'],
-//                        'as'         => 'admin.comment.ajax_field',
-//                        'uses'       => 'Backend\CommentController@ajaxFieldChange',
-//                    )
-//                );
-//                $router->resource(
-//                    'comment',
-//                    'Backend\CommentController',
-//                    ['only' => ['index', 'edit', 'update', 'destroy']]
-//                );
-
-                // questions
-//                $router->post(
-//                    'question/{id}/ajax_field',
-//                    [
-//                        'middleware' => ['ajax'],
-//                        'as'         => 'admin.question.ajax_field',
-//                        'uses'       => 'Backend\QuestionController@ajaxFieldChange',
-//                    ]
-//                );
-//                $router->resource('question', 'Backend\QuestionController');
 
                 // menus
                 $router->post(
@@ -155,29 +95,6 @@ $router->group(
                     ]
                 );
                 $router->resource('text_widget', 'Backend\TextWidgetController');
-
-                // variables
-//                $router->post(
-//                    'variable/{id}/ajax_field',
-//                    array (
-//                        'middleware' => ['ajax'],
-//                        'as'         => 'admin.variable.ajax_field',
-//                        'uses'       => 'Backend\VariableController@ajaxFieldChange',
-//                    )
-//                );
-//                $router->get(
-//                    'variable/value/index',
-//                    ['as' => 'admin.variable.value.index', 'uses' => 'Backend\VariableController@indexValues']
-//                );
-//                $router->post(
-//                    'variable/value/update',
-//                    [
-//                        'middleware' => ['ajax'],
-//                        'as' => 'admin.variable.value.update',
-//                        'uses' => 'Backend\VariableController@updateValue'
-//                    ]
-//                );
-//                $router->resource('variable', 'Backend\VariableController');
 
                 // translations
                 $router->get(

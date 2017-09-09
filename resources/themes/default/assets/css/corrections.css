@@ -9,6 +9,12 @@ body, h1, h2, h3, h4, h5, h6, p, a, input, textarea, button{
     font-size: 1.2em;
 
 }
+.content a{
+    font-size: 1em;
+}
+.content a:hover, .content a:active, .content a:focus{
+    color: #97aad0;
+}
 h1, h2, h3{
     color: #4682b4;
 }
@@ -17,12 +23,13 @@ strong{
 }
 body{
     background: #dfe4ef;
+    color: #2e2f31;
 }
 #circle{
     background: #4682b4;
 }
 .page{
-    background-color: #dfe4ef;
+    background-color: #fbfbfd;
     padding-bottom: 20px;
 }
 header{
@@ -115,7 +122,7 @@ footer{
     background: #4682b4;
 }
 .page-alternate{
-    background: #a8bed2;
+    background: #c9e0f5;
 }
 #contact-form input, #contact-form textarea{
     background: #ffffff;

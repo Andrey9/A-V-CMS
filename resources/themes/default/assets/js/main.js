@@ -288,32 +288,32 @@ BRUSHED.goUp = function(){
 	Scroll to Top
 ================================================== */
 
-BRUSHED.scrollToTop = function(){
-	var windowWidth = $(window).width(),
-		didScroll = false;
+BRUSHED.scrollToTop = function() {
+    var windowWidth = $(window).width(),
+        didScroll = false;
 
-	var $arrow = $('#back-to-top');
+    var $arrow = $('#back-to-top');
 
-	$arrow.click(function(e) {
-		$('body,html').animate({ scrollTop: "0" }, 750, 'easeOutExpo' );
-		e.preventDefault();
-	})
+    $arrow.click(function (e) {
+        $('body,html').animate({scrollTop: "0"}, 750, 'easeOutExpo');
+        e.preventDefault();
+    })
 
-	$(window).scroll(function() {
-		didScroll = true;
-	});
+    $(window).scroll(function () {
+        didScroll = true;
+    });
 
-	setInterval(function() {
-		if( didScroll ) {
-			didScroll = false;
+    setInterval(function () {
+        if (didScroll) {
+            didScroll = false;
 
-			if( $(window).scrollTop() > 800 ) {
-				$arrow.css('display', 'block');
-			} else {
-				$arrow.css('display', 'none');
-			}
-		}
-	}, 250);
+            if ($(window).scrollTop() > 800) {
+                $arrow.css('display', 'block');
+            } else {
+                $arrow.css('display', 'none');
+            }
+        }
+    }, 250);
 }
 
 /* ==================================================
@@ -400,7 +400,7 @@ $(document).ready(function(){
 	Modernizr.load([
 	{
 		test: Modernizr.placeholder,
-		nope: '_include/js/placeholder.js', 
+		nope: '../placeholder.js',
 		complete : function() {
 				if (!Modernizr.placeholder) {
 						Placeholders.init({

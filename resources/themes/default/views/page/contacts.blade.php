@@ -2,7 +2,12 @@
 
 @section('content')
     <!-- Contact Section -->
-    <div id="contact" class="page" style="padding-bottom: 20px">
+    <style>
+        body{
+            background: #c9e0f5;
+        }
+    </style>
+    <div id="contact" class="page" style="padding-bottom: 20px; background: #c9e0f5">
         <div class="container">
             <!-- Title Page -->
             <div class="row">

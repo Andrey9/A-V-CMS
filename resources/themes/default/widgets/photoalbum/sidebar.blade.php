@@ -10,5 +10,5 @@
             </a>
         </div>
     @endforeach
-    <a href="{!! route('news.index') !!}" class="button">@lang('labels.all_photoalbums')</a>
+    <a href="{!! route('photoalbum.index') !!}" class="button">@lang('labels.all_photoalbums')</a>
 @endif

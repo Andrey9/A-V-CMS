@@ -10,8 +10,8 @@
     </div>
 @else
     <div class="form-group">
-        <div class="form-group required @if ($errors->has('items.'.$key.'.' .$id. '.'. $locale .'.name')) has-error @endif">
-            {!! Form::text('items['.$key.'][' . $id . '][' . $locale. '][name]', isset($item->translate($locale)->name) ? $item->translate($locale)->name : '', ['id' => 'items.'.$key.'.' . $id . '.' . $locale. '.name', 'placeholder' => trans('labels.name'), 'class' => 'form-control input-sm', 'required' => 'true']) !!}
+        <div class="form-group">
+            {!! Form::text('items['.$key.'][' . $id . '][' . $locale. '][name]', isset($item->translate($locale)->name) ? $item->translate($locale)->name : '', ['id' => 'items.'.$key.'.' . $id . '.' . $locale. '.name', 'placeholder' => trans('labels.name'), 'class' => 'form-control input-sm']) !!}
         </div>
 
         <div class="form-group">
